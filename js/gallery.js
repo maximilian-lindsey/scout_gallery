@@ -26,28 +26,35 @@ class Gallery {
 			// create nodes
 			let galleryRoot = document.createElement('div');
 			let galleryImageWrapper = document.createElement('div');
+			let galleryIamgePrevBtn = document.createElement('button');
 			let galleryImage = document.createElement('img');
+			let galleryIamgeNextBtn = document.createElement('button');
 			let galleryControllsWrapper = document.createElement('div');
-			let galleryPrevBtn = document.createElement('button');
-			let galleryPaginationLabel = document.createElement('span');
-			let galleryNextBtn = document.createElement('button');
+			let galleryControllsPrevBtn = document.createElement('button');
+			let galleryControllsPaginationLabel = document.createElement('span');
+			let galleryControllsNextBtn = document.createElement('button');
 			// add current image and paginationLabel reference to state
 			this.currentImage = galleryImage;
-			this.paginationLabel = galleryPaginationLabel;
+			this.paginationLabel = galleryControllsPaginationLabel;
 			// add classes
 			galleryRoot.className = 'gallery';
 			galleryImageWrapper.className = 'gallery-images';
+			galleryIamgePrevBtn.className = 'gallery-images-button mod-prev';
 			galleryImage.className = 'gallery-images-image';
+			galleryIamgeNextBtn.className = 'gallery-images-button mod-next';
 			galleryControllsWrapper.className = 'gallery-controlls';
-			galleryPrevBtn.className = 'gallery-controlls-button';
-			galleryPaginationLabel.className = 'gallery-controlls-pagination';
-			galleryNextBtn.className = 'gallery-controlls-button';
+			galleryControllsPrevBtn.className = 'gallery-controlls-button mod-prev';
+			galleryControllsPaginationLabel.className = 'gallery-controlls-pagination';
+			galleryControllsNextBtn.className = 'gallery-controlls-button mod-next';
 			// add content
+			galleryIamgePrevBtn.textContent = '<'
 			galleryImage.src = this.imageURLs[this.currentImageIndex];
-			galleryImage.style.minHeight = this.minHeight;
-			galleryPrevBtn.textContent = '←';
+			galleryIamgeNextBtn.textContent = '>'
+			galleryControllsPrevBtn.textContent = '←';
 			this.paginationLabel.textContent = 'loading'
-			galleryNextBtn.textContent = '→';
+			galleryControllsNextBtn.textContent = '→';
+			// add inline styles
+			galleryImage.style.minHeight = this.minHeight;
 			// add event listeners
 			galleryImage.onload = (event)=>{
 				this.imageLoadComplete(event);
@@ -55,17 +62,27 @@ class Gallery {
 			galleryImage.onerror = (event)=>{
 				this.imageLoadError(event);
 			}
-			galleryPrevBtn.addEventListener('click', (event)=>{
+			galleryIamgePrevBtn.addEventListener('click', (event)=>{
 				this.getPreviousImage(event);
 			});
-			galleryNextBtn.addEventListener('click', (event)=>{
+			galleryIamgeNextBtn.addEventListener('click', (event)=>{
+				this.getNextImage(event);
+			});
+			galleryControllsPrevBtn.addEventListener('click', (event)=>{
+				this.getPreviousImage(event);
+			});
+			galleryControllsNextBtn.addEventListener('click', (event)=>{
 				this.getNextImage(event);
 			});
 			// append nodes to dom
+			galleryImageWrapper.appendChild(galleryControllsPrevBtn);
+			galleryImageWrapper.appendChild(galleryIamgePrevBtn);
 			galleryImageWrapper.appendChild(galleryImage);
-			galleryControllsWrapper.appendChild(galleryPrevBtn);
-			galleryControllsWrapper.appendChild(galleryPaginationLabel);
-			galleryControllsWrapper.appendChild(galleryNextBtn);
+			galleryImageWrapper.appendChild(galleryIamgeNextBtn);
+			galleryImageWrapper.appendChild(galleryControllsNextBtn);
+			galleryControllsWrapper.appendChild(galleryControllsPrevBtn);
+			galleryControllsWrapper.appendChild(galleryControllsPaginationLabel);
+			galleryControllsWrapper.appendChild(galleryControllsNextBtn);
 			galleryRoot.appendChild(galleryImageWrapper);
 			galleryRoot.appendChild(galleryControllsWrapper);
 			galleryContainer.appendChild(galleryRoot);
@@ -119,5 +136,5 @@ class Gallery {
 
 
 window.onload = ()=>{
-	const gallery = new Gallery('root', ['https://placebear.com/g/500/500/', 'https://placebear.com/g/500/501', 'https://placebear.com/g/500/502', 'https://placebear.com/g/500/503'], 0);
+	const gallery = new Gallery('root', ['https://placebear.com/g/500/500', 'https://placebear.com/g/500/501', 'https://placebear.com/g/500/502', 'https://placebear.com/g/500/503'], 0);
 }

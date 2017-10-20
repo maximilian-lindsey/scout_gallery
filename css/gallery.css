@@ -3,11 +3,15 @@
 }
 .gallery-images{
 	width: 100%;
+	display: flex;
+	justify-content: center;
 	position: relative;
 }
 .gallery-images-image{
 	display: block;
 	position: relative;
+	min-height: 100%; 
+	width: auto;
 }
 .gallery-images-image.mod-error{
 	
@@ -21,10 +25,19 @@
 	position: absolute;
 }
 .gallery-controlls{
-
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	padding-top: 12px;
 }
 .gallery-controlls-button{
-
+	cursor: pointer;
+}
+.gallery-controlls-button.mod-next{
+	margin-left: 12px;
+}
+.gallery-controlls-button.mod-prev{
+	margin-right: 12px;
 }
 .gallery-controlls-pagination{
 
