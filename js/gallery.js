@@ -44,9 +44,12 @@ class Gallery {
 			// add content
 			galleryImage.src = this.imageURLs[this.currentImageIndex];
 			galleryPrevBtn.textContent = '←';
-			this.updatePaginationLabel();
+			this.paginationLabel.textContent = 'loading'
 			galleryNextBtn.textContent = '→';
 			// add event listeners
+			galleryImage.onload = (event)=>{
+				this.imageLoad(event);
+			}
 			galleryPrevBtn.addEventListener('click', (event)=>{
 				this.getPreviousImage(event);
 			});
@@ -68,6 +71,10 @@ class Gallery {
 		}		
 	}
 
+	imageLoad(event){
+		this.updatePaginationLabel();
+	}
+
 	updatePaginationLabel(){
 		this.paginationLabel.textContent = `${this.currentImageIndex + 1}/${this.imageURLs.length}`;
 	}
@@ -75,12 +82,10 @@ class Gallery {
 	getPreviousImage(event){
 		this.decreaseImageIndex();
 		this.currentImage.src = this.imageURLs[this.currentImageIndex];
-		this.updatePaginationLabel();
 	}
 	getNextImage(event){
 		this.increaseImageIndex();
-		this.currentImage.src = this.imageURLs[this.currentImageIndex];
-		this.updatePaginationLabel();
+		this.currentImage.src = this.imageURLs[this.currentImageIndex];		
 	}
 
 	increaseImageIndex(){
