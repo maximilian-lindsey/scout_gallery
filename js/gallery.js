@@ -12,7 +12,9 @@ class Gallery {
 		else{
 			this.galleryContainerId = galleryContainerId;
 			this.imageURLs = imageURLs;
-			this.currentImage = (firstImage >= 0) ? firstImage : 0;
+			this.currentImageIndex = (firstImage >= 0) ? firstImage : 0;
+			this.currentImage = null;
+			this.paginationLabel = null;
 			this.createDOMElements();
 		}
 	}
@@ -28,6 +30,9 @@ class Gallery {
 			let galleryPrevBtn = document.createElement('button');
 			let galleryPaginationLabel = document.createElement('span');
 			let galleryNextBtn = document.createElement('button');
+			// add current image and paginationLabel reference to state 
+			this.currentImage = galleryImage;
+			this.paginationLabel = galleryPaginationLabel;
 			// add classes
 			galleryRoot.className = 'gallery';
 			galleryImageWrapper.className = 'gallery-images';
@@ -37,9 +42,9 @@ class Gallery {
 			galleryPaginationLabel.className = 'gallery-controlls-pagination';			
 			galleryNextBtn.className = 'gallery-controlls-button';
 			// add content
-			galleryImage.src = this.imageURLs[this.currentImage];
+			galleryImage.src = this.imageURLs[this.currentImageIndex];
 			galleryPrevBtn.textContent = '←';
-			galleryPaginationLabel.textContent = `${this.currentImage}/${this.imageURLs.length}`;
+			this.updatePaginationLabel();
 			galleryNextBtn.textContent = '→';
 			// add event listeners
 			galleryPrevBtn.addEventListener('click', (event)=>{
@@ -47,7 +52,7 @@ class Gallery {
 			});
 			galleryNextBtn.addEventListener('click', (event)=>{
 				this.getNextImage(event);
-			});
+			});			
 			// append nodes to dom
 			galleryImageWrapper.appendChild(galleryImage);
 			galleryControllsWrapper.appendChild(galleryPrevBtn);
@@ -63,11 +68,19 @@ class Gallery {
 		}		
 	}
 
+	updatePaginationLabel(){
+		this.paginationLabel.textContent = `${this.currentImageIndex + 1}/${this.imageURLs.length}`;
+	}
+
 	getPreviousImage(event){
-		console.log(event);
+		this.currentImageIndex--;
+		this.currentImage.src = this.imageURLs[this.currentImageIndex];
+		this.updatePaginationLabel();
 	}
 	getNextImage(event){
-		console.log(event);
+		this.currentImageIndex++;
+		this.currentImage.src = this.imageURLs[this.currentImageIndex];
+		this.updatePaginationLabel();
 	}
 }
 
