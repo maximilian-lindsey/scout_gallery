@@ -1,0 +1,34 @@
+.gallery{
+	position: relative;
+}
+.gallery-images{
+	width: 100%;
+	position: relative;
+}
+.gallery-images-image{
+	display: block;
+	position: relative;
+}
+.gallery-images-image.mod-error{
+	
+}
+.gallery-images-image.mod-error::before{
+	top: 0;
+	left: 0;
+	content: 'Image not found';
+	height: 100%;
+	width: 100%;
+	position: absolute;
+}
+.gallery-controlls{
+
+}
+.gallery-controlls-button{
+
+}
+.gallery-controlls-pagination{
+
+}
+.gallery-controlls-button{
+
+}
