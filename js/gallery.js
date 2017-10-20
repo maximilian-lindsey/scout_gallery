@@ -1,18 +1,21 @@
+// author: Maximilian Lindsey - 2017
+// all of this could be done in a much neater fashion using react or directly in html, but I wanted this gallery to work as a standalone component
+
 class Gallery {
-	constructor(galleryContainerId = '', imageURLs = [], firstImage = 0, minHeight = '500px') {
+	constructor(galleryContainerId = '', imageURLs = [], firstImageIndex = 0, minHeight = '500px') {
 		if(galleryContainerId == ''){
 			throw Error('galleryContainerId is missing');
 		}
 		if(imageURLs.length == 0){
 			throw Error('no imageURLs recieved');
 		}
-		if(firstImage >= imageURLs.length){
-			throw Error('firstImage not found in imageURLs');
+		if(firstImageIndex >= imageURLs.length){
+			throw Error('firstImageIndex not found in imageURLs');
 		}
 		else{
 			this.galleryContainerId = galleryContainerId;
 			this.imageURLs = imageURLs;
-			this.currentImageIndex = (firstImage >= 0) ? firstImage : 0;
+			this.currentImageIndex = (firstImageIndex >= 0) ? firstImageIndex : 0;
 			this.currentImage = null;
 			this.paginationLabel = null;
 			this.minHeight = minHeight;
@@ -135,5 +138,12 @@ class Gallery {
 
 
 window.onload = ()=>{
-	const gallery = new Gallery('root', ['https://placebear.com/g/500/500', 'https://placebear.com/g/500/501', 'https://placebear.com/g/500/5/01', 'https://placebear.com/g/500/502', 'https://placebear.com/g/500/503'], 0);
+	const images = [
+		'https://placebear.com/g/500/500',
+		'https://placebear.com/g/500/501',
+		'https://placebear.com/g/500/5/01',
+		'https://placebear.com/g/500/502',
+		'https://placebear.com/g/500/503'
+	];
+	const gallery = new Gallery('root', images, 0);
 }
