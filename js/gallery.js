@@ -47,10 +47,12 @@ class Gallery {
 			galleryControllsPaginationLabel.className = 'gallery-controlls-pagination';
 			galleryControllsNextBtn.className = 'gallery-controlls-button mod-next';
 			// add content
+			galleryIamgePrevBtn.textContent = 'previous';
 			galleryImage.src = this.imageURLs[this.currentImageIndex];
-			galleryControllsPrevBtn.textContent = '←';
+			galleryIamgeNextBtn.textContent = 'next';
+			galleryControllsPrevBtn.textContent = 'previous';
 			this.paginationLabel.textContent = 'loading'
-			galleryControllsNextBtn.textContent = '→';
+			galleryControllsNextBtn.textContent = 'next';
 			// add inline styles
 			galleryImage.style.minHeight = this.minHeight;
 			// add event listeners
