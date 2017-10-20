@@ -73,14 +73,32 @@ class Gallery {
 	}
 
 	getPreviousImage(event){
-		this.currentImageIndex--;
+		this.decreaseImageIndex();
 		this.currentImage.src = this.imageURLs[this.currentImageIndex];
 		this.updatePaginationLabel();
 	}
 	getNextImage(event){
-		this.currentImageIndex++;
+		this.increaseImageIndex();
 		this.currentImage.src = this.imageURLs[this.currentImageIndex];
 		this.updatePaginationLabel();
+	}
+
+	increaseImageIndex(){
+		if(this.currentImageIndex + 1 < this.imageURLs.length){
+			this.currentImageIndex++;
+		}
+		else{
+			this.currentImageIndex = 0;
+		}
+	}
+
+	decreaseImageIndex(){
+		if(this.currentImageIndex - 1 >= 0){
+			this.currentImageIndex--;
+		}
+		else{
+			this.currentImageIndex = this.imageURLs.length - 1;
+		}
 	}
 }
 
