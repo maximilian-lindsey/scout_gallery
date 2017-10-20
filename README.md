@@ -1,1 +1,1 @@
-# scout_gallery
+# Scout24 - Gallery
