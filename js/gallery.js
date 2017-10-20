@@ -96,6 +96,7 @@ class Gallery {
 	}
 
 	imageLoadError(event){
+		this.currentImage.setAttribute('data-content', `: ${this.imageURLs[this.currentImageIndex]}`);
 		this.currentImage.classList.add('mod-error');
 		this.updatePaginationLabel();
 	}
@@ -134,5 +135,5 @@ class Gallery {
 
 
 window.onload = ()=>{
-	const gallery = new Gallery('root', ['https://placebear.com/g/500/500', 'https://placebear.com/g/500/501', 'https://placebear.com/g/500/502', 'https://placebear.com/g/500/503'], 0);
+	const gallery = new Gallery('root', ['https://placebear.com/g/500/500', 'https://placebear.com/g/500/501', 'https://placebear.com/g/500/5/01', 'https://placebear.com/g/500/502', 'https://placebear.com/g/500/503'], 0);
 }

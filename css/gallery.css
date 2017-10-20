@@ -20,10 +20,12 @@
 .gallery-images-image.mod-error::before{
 	top: 0;
 	left: 0;
-	content: 'Image not found';
+	content: 'Image not found'attr(data-content);
 	height: 100%;
 	width: 100%;
-	position: absolute;
+	display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .gallery-images-button{
 	height: 100%;
@@ -43,6 +45,16 @@
 }
 .gallery-images-button.mod-prev:hover::before{
 	content: '';
+	left: 0;
+	width: 2rem;
+	height: 2rem;
+	border: 1px solid #000;
+	background-color: rgba(255,255,255,0.5);
+	margin-top: -0.25rem;
+	position: absolute;
+}
+.gallery-images-button.mod-prev:hover::after{
+	content: '';
 	border-top: 0.5rem solid transparent;
 	border-bottom: 0.5rem solid transparent;
 	border-right: 0.5rem solid #000;
@@ -53,16 +65,17 @@
 	margin-left: 0.75rem;
 	position: absolute;
 }
-.gallery-images-button.mod-prev:hover::after{
+.gallery-images-button.mod-next:hover::before{
 	content: '';
-	left: 0;
+	right: 0;
 	width: 2rem;
 	height: 2rem;
 	border: 1px solid #000;
 	margin-top: -0.25rem;
+	background-color: rgba(255,255,255,0.5);
 	position: absolute;
 }
-.gallery-images-button.mod-next:hover::before{
+.gallery-images-button.mod-next:hover::after{
 	content: '';
 	border-top: 0.5rem solid transparent;
 	border-bottom: 0.5rem solid transparent;
@@ -72,15 +85,6 @@
 	height: 0;
 	margin-top: 0.25rem;
 	margin-right: 0.75rem;
-	position: absolute;
-}
-.gallery-images-button.mod-next:hover::after{
-	content: '';
-	right: 0;
-	width: 2rem;
-	height: 2rem;
-	border: 1px solid #000;
-	margin-top: -0.25rem;
 	position: absolute;
 }
 .gallery-controlls{
