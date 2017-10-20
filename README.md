@@ -9,3 +9,4 @@ Just create an instance of the Gallery class with the following parameters:
 - firstImageIndex: index of the gallery start image (starts with zero) [optional]
 - minHeight: minimal height in pixel [optional]
 
+**Example:** [https://jsfiddle.net/maximilian_lindsey/3ku7b4L3/](https://jsfiddle.net/maximilian_lindsey/3ku7b4L3/)
