@@ -24,6 +24,31 @@
 	width: 100%;
 	position: absolute;
 }
+.gallery-images-button{
+	height: 100%;
+	width: 50%;
+	background: 0;
+	border: none;
+	cursor: pointer;
+    outline: inherit !important;
+	position: absolute;
+}
+.gallery-images-button.mod-prev{
+	left: 0;
+}
+.gallery-images-button.mod-prev:hover::before{
+	content: '<';
+	left: 0;
+	position: absolute;
+}
+.gallery-images-button.mod-next{
+	right: 0;
+}
+.gallery-images-button.mod-next:hover::before{
+	content: '>';
+	right: 0;
+	position: absolute;
+}
 .gallery-controlls{
 	width: 100%;
 	display: flex;

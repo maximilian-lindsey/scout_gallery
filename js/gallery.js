@@ -47,9 +47,7 @@ class Gallery {
 			galleryControllsPaginationLabel.className = 'gallery-controlls-pagination';
 			galleryControllsNextBtn.className = 'gallery-controlls-button mod-next';
 			// add content
-			galleryIamgePrevBtn.textContent = '<'
 			galleryImage.src = this.imageURLs[this.currentImageIndex];
-			galleryIamgeNextBtn.textContent = '>'
 			galleryControllsPrevBtn.textContent = '←';
 			this.paginationLabel.textContent = 'loading'
 			galleryControllsNextBtn.textContent = '→';
@@ -75,11 +73,9 @@ class Gallery {
 				this.getNextImage(event);
 			});
 			// append nodes to dom
-			galleryImageWrapper.appendChild(galleryControllsPrevBtn);
-			galleryImageWrapper.appendChild(galleryIamgePrevBtn);
 			galleryImageWrapper.appendChild(galleryImage);
+			galleryImageWrapper.appendChild(galleryIamgePrevBtn);
 			galleryImageWrapper.appendChild(galleryIamgeNextBtn);
-			galleryImageWrapper.appendChild(galleryControllsNextBtn);
 			galleryControllsWrapper.appendChild(galleryControllsPrevBtn);
 			galleryControllsWrapper.appendChild(galleryControllsPaginationLabel);
 			galleryControllsWrapper.appendChild(galleryControllsNextBtn);
